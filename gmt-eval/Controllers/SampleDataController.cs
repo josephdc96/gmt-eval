@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace gmt_eval.Controllers
 {
     [Route("api/[controller]")]
+    [ApiController]
     public class SampleDataController : Controller
     {
         private static string[] Summaries = new[]
