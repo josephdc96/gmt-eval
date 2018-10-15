@@ -1,5 +1,33 @@
 <mat-toolbar color="primary">
-  <span>Data Analyzer</span>
-  <span class="spacer"></span>
-  <button mat-button (click)="openDialog()">Upload Data</button>
+  <mat-toolbar-row>
+    <span>Data Analyzer</span>
+    <span class="spacer"></span>
+    <button mat-button (click)="openDialog()">Upload Data</button>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    <button mat-button [matMenuTriggerFor]="charts">{{chart.name.length > 0 ? 'Chart Type: ' + chart.name : 'Please select a chart'}}<mat-icon>arrow_drop_down</mat-icon></button>
+    <mat-menu #charts>
+      <button mat-menu-item (click)="fetchInternetData()">Internet Access</button>
+      <button mat-menu-item (click)="fetchFailureData()">Past Failures</button>
+      <button mat-menu-item>Study Time</button>
+      <button mat-menu-item>Absences</button>
+      <button mat-menu-item>Health</button>
+      <button mat-menu-item>Travel Time</button>
+      <button mat-menu-item>Internet Access</button>
+    </mat-menu>
+  </mat-toolbar-row>
 </mat-toolbar>
+
+<mat-card style="margin: 10px">
+  <mat-card-header>
+    <mat-card-title>Visualizations</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div [hidden]="!chart.data">
+      <canvas id="canvas">{{chart.data}}</canvas>
+    </div>
+    <div *ngIf="!chart.data">
+      Please select a chart or visualization.
+    </div>
+  </mat-card-content>
+</mat-card>

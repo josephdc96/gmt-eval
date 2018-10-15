@@ -5,7 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MatButtonModule, MatDialogModule, MatProgressBarModule, MatToolbarModule} from "@angular/material";
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatDialogModule, MatIconModule, MatMenuModule,
+  MatProgressBarModule,
+  MatToolbarModule
+} from "@angular/material";
 import { UploadComponent } from './upload/upload.component';
 
 @NgModule({
@@ -21,7 +27,10 @@ import { UploadComponent } from './upload/upload.component';
     MatToolbarModule,
     MatButtonModule,
     MatDialogModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatCardModule,
+    MatIconModule,
+    MatMenuModule
   ],
   entryComponents: [
     AppComponent, UploadComponent
