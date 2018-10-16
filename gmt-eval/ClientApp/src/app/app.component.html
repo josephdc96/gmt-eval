@@ -9,10 +9,10 @@
     <mat-menu #charts>
       <button mat-menu-item (click)="fetchInternetData()">Internet Access</button>
       <button mat-menu-item (click)="fetchFailureData()">Past Failures</button>
-      <button mat-menu-item>Study Time</button>
-      <button mat-menu-item>Absences</button>
-      <button mat-menu-item>Health</button>
-      <button mat-menu-item>Travel Time</button>
+      <button mat-menu-item (click)="fetchStudyTimeData()">Study Time</button>
+      <button mat-menu-item (click)="fetchAbsenceData()">Absences</button>
+      <button mat-menu-item (click)="fetchHealthData()">Health</button>
+      <button mat-menu-item (click)="fetchTransitData()">Travel Time</button>
       <button mat-menu-item>Internet Access</button>
     </mat-menu>
   </mat-toolbar-row>
