@@ -7,6 +7,9 @@
 *.userosscache
 *.sln.docstates
 
+gmt-eval/appsettings.Development.json
+gmt-eval/appsettings.json
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
