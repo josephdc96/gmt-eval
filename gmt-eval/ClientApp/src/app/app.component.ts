@@ -18,6 +18,8 @@ export class AppComponent {
     data: null
   };
 
+  loading = false;
+
   constructor(public dialog: MatDialog, private http: HttpClient) { }
 
   openDialog(): void {
@@ -32,7 +34,9 @@ export class AppComponent {
 
   fetchInternetData(): void {
     this.chart.data = null;
+    this.loading = true;
     this.http.get<InternetData>('/api/FetchData/FetchInternetData').subscribe(data => {
+      this.loading = false;
       this.chart.name = 'Average Grade by Internet Access';
       this.chart.data = new Chart('canvas', {
         type: 'bar',
@@ -67,7 +71,9 @@ export class AppComponent {
 
   fetchFailureData(): void {
     this.chart.data = null;
+    this.loading = true;
     this.http.get<number[]>('/api/FetchData/FetchFailureData').subscribe(data => {
+      this.loading = false;
       this.chart.name = 'Average Grade by Number of Failures';
       this.chart.data = new Chart('canvas', {
         type: 'line',
@@ -103,7 +109,9 @@ export class AppComponent {
 
   fetchStudyTimeData(): void {
     this.chart.data = null;
+    this.loading = true;
     this.http.get<number[]>('/api/FetchData/FetchStudyTimeData').subscribe(data => {
+      this.loading = false;
       this.chart.name = 'Average grade based on study time';
       this.chart.data = new Chart('canvas', {
         type: 'line',
@@ -139,7 +147,9 @@ export class AppComponent {
 
   fetchAbsenceData(): void {
     this.chart.data = null;
+    this.loading = true;
     this.http.get<TrendlineData>('/api/FetchData/FetchAbsenceData').subscribe(data => {
+      this.loading = false;
       this.chart.name = 'Average grade based on number of absences';
       this.chart.data = new Chart('canvas', {
         type: 'line',
@@ -190,7 +200,9 @@ export class AppComponent {
 
   fetchHealthData(): void {
     this.chart.data = null;
+    this.loading = true;
     this.http.get<HealthData>('/api/FetchData/FetchHealthData').subscribe(data => {
+      this.loading = false;
       this.chart.name = 'Average grade based on overall health';
       this.chart.data = new Chart('canvas', {
         type: 'line',
@@ -248,7 +260,9 @@ export class AppComponent {
 
   fetchTransitData(): void {
     this.chart.data = null;
+    this.loading = true;
     this.http.get<number[]>('/api/FetchData/FetchTransitData').subscribe(data => {
+      this.loading = false;
       this.chart.name = 'Average grade based on travel time';
       this.chart.data = new Chart('canvas', {
         type: 'line',

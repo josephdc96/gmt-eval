@@ -9,7 +9,7 @@ import {
   MatButtonModule,
   MatCardModule,
   MatDialogModule, MatIconModule, MatMenuModule,
-  MatProgressBarModule,
+  MatProgressBarModule, MatProgressSpinnerModule,
   MatToolbarModule
 } from "@angular/material";
 import { UploadComponent } from './upload/upload.component';
@@ -30,7 +30,8 @@ import { UploadComponent } from './upload/upload.component';
     MatProgressBarModule,
     MatCardModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressSpinnerModule
   ],
   entryComponents: [
     AppComponent, UploadComponent

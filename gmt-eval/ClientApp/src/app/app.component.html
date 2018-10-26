@@ -13,7 +13,6 @@
       <button mat-menu-item (click)="fetchAbsenceData()">Absences</button>
       <button mat-menu-item (click)="fetchHealthData()">Health</button>
       <button mat-menu-item (click)="fetchTransitData()">Travel Time</button>
-      <button mat-menu-item>Internet Access</button>
     </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>
@@ -26,8 +25,11 @@
     <div [hidden]="!chart.data">
       <canvas id="canvas">{{chart.data}}</canvas>
     </div>
-    <div *ngIf="!chart.data">
+    <div *ngIf="!chart.data && !loading">
       Please select a chart or visualization.
+    </div>
+    <div *ngIf="loading">
+      <mat-spinner></mat-spinner>
     </div>
   </mat-card-content>
 </mat-card>
