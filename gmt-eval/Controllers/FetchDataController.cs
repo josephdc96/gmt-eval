@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using gmt_eval.Models;
 using Microsoft.AspNetCore.Internal;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -14,6 +15,15 @@ namespace gmt_eval.Controllers
     [ApiController]
     public class FetchDataController : Controller
     {
+        private IConfiguration config;
+        private string _path;
+
+        public FetchDataController(IConfiguration configuration)
+        {
+            this.config = configuration;
+            this._path = configuration["MongoString"];
+        }
+        
         [HttpGet("FetchInternetData")]
         public async Task<InternetData> FetchInternetData()
         {
@@ -21,7 +31,7 @@ namespace gmt_eval.Controllers
             {
                 var client =
                     new MongoClient(
-                        "mongodb+srv://jcauble:cauJoseph96@joseph-dhgna.gcp.mongodb.net/test?retryWrites=true");
+                        _path);
                 var database = client.GetDatabase("gmt-eval");
                 var collection = database.GetCollection<BsonDocument>("data");
 
@@ -69,7 +79,7 @@ namespace gmt_eval.Controllers
             {
                 var client =
                     new MongoClient(
-                        "mongodb+srv://jcauble:cauJoseph96@joseph-dhgna.gcp.mongodb.net/test?retryWrites=true");
+                        _path);
                 var database = client.GetDatabase("gmt-eval");
                 var collection = database.GetCollection<BsonDocument>("data");
 
@@ -105,7 +115,7 @@ namespace gmt_eval.Controllers
             {
                 var client =
                     new MongoClient(
-                        "mongodb+srv://jcauble:cauJoseph96@joseph-dhgna.gcp.mongodb.net/test?retryWrites=true");
+                        _path);
                 var database = client.GetDatabase("gmt-eval");
                 var collection = database.GetCollection<BsonDocument>("data");
 
@@ -141,7 +151,7 @@ namespace gmt_eval.Controllers
             {
                 var client =
                     new MongoClient(
-                        "mongodb+srv://jcauble:cauJoseph96@joseph-dhgna.gcp.mongodb.net/test?retryWrites=true");
+                        _path);
                 var database = client.GetDatabase("gmt-eval");
                 var collection = database.GetCollection<BsonDocument>("data");
 
@@ -184,7 +194,7 @@ namespace gmt_eval.Controllers
         {
             var client =
                 new MongoClient(
-                    "mongodb+srv://jcauble:cauJoseph96@joseph-dhgna.gcp.mongodb.net/test?retryWrites=true");
+                    _path);
             var database = client.GetDatabase("gmt-eval");
             var collection = database.GetCollection<BsonDocument>("data");
 
@@ -229,7 +239,7 @@ namespace gmt_eval.Controllers
         {
             var client =
                 new MongoClient(
-                    "mongodb+srv://jcauble:cauJoseph96@joseph-dhgna.gcp.mongodb.net/test?retryWrites=true");
+                    _path);
             var database = client.GetDatabase("gmt-eval");
             var collection = database.GetCollection<BsonDocument>("data");
 
