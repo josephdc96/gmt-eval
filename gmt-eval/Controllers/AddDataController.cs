@@ -22,7 +22,7 @@ namespace gmt_eval.Controllers
         {
             try
             {
-                var client = new MongoClient("mongodb+srv://jcauble:cauJoseph96@joseph-dhgna.gcp.mongodb.net/test?retryWrites=true");
+                var client = new MongoClient();
                 var database = client.GetDatabase("gmt-eval");
                 var collection = database.GetCollection<BsonDocument>("data");
 
